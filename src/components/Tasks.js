@@ -1,9 +1,9 @@
+import TodoEntry from "./TodoEntry"
 
-
-const Tasks = ({listOfTasks}) => {
+const Tasks = ({listOfTasks, onDelete}) => {
     return (
     <>
-        {listOfTasks.map((task)=> <h3 key={task.id}>{task.text}</h3>)}
+        {listOfTasks.map((task)=> <TodoEntry key={task.id} task={task} onDelete={onDelete}/>)}
     </>
   )
 }
