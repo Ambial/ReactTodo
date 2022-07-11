@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { useState, useEffect } from "react"
 import AddTask from './components/AddTask';
-import { deleteTaskById, fetchTasks } from './api/Api';
+import { deleteTaskById, fetchTasks, addNewTask, fetchTaskById, updateTaskById } from './api/Api';
 
 function App() {
   const [showAddSection, setShowAddSection] = useState(false)
@@ -21,9 +21,8 @@ function App() {
     setShowAddSection(!showAddSection)
   }
 
-  const addTask = (task) => {
-    const id = Math.floor(Math.random()*10000) + 1
-    const newTask = {id, ...task}
+  const addTask = async (task) => {
+    const newTask = await addNewTask(task)
     setTasks([...tasks, newTask])
   }
 
@@ -32,7 +31,9 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    updateTaskById(id)
+
     setTasks(tasks.map((task) => task.id === id 
       ? {...task, reminder: !task.reminder }
       : task)
