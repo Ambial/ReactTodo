@@ -3,7 +3,14 @@ import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { useState, useEffect } from "react"
 import AddTask from './components/AddTask';
-import { deleteTaskById, fetchTasks, addNewTask, fetchTaskById, updateTaskById } from './api/Api';
+import About from './components/About';
+import { deleteTaskById, fetchTasks, addNewTask, updateTaskById } from './api/Api';
+import Footer from './components/Footer';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [showAddSection, setShowAddSection] = useState(false)
@@ -42,18 +49,27 @@ function App() {
 
   return (
     <div className='container'>
-      <Header title={'Task Tracker'} 
-              onToggle={toggleAddSection}
-              activated={!showAddSection}
-      />
-      { showAddSection 
-        ? <AddTask onAdd={addTask}/>
-        : ''
-      }
-      { tasks.length 
-        ? <Tasks listOfTasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> 
-        : 'Nothing to do!'
-      }      
+      <BrowserRouter>
+        <Routes>
+          <Route path="about" element={<About />}/>
+          <Route path="/" element={
+            <>
+              <Header title={'Task Tracker'} 
+                      onToggle={toggleAddSection}
+                      activated={!showAddSection}
+              />
+              { showAddSection 
+                ? <AddTask onAdd={addTask}/>
+                : ''
+              }
+              { tasks.length 
+                ? <Tasks listOfTasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> 
+                : 'Nothing to do!'
+              }
+              <Footer />
+            </>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
