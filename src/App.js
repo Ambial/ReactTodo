@@ -50,14 +50,14 @@ function App() {
   return (
     <div className='container'>
       <BrowserRouter>
+        <Header title={'Task Tracker'} 
+          onToggle={toggleAddSection}
+          activated={!showAddSection}
+        />
         <Routes>
           <Route path="about" element={<About />}/>
           <Route path="/" element={
             <>
-              <Header title={'Task Tracker'} 
-                      onToggle={toggleAddSection}
-                      activated={!showAddSection}
-              />
               { showAddSection 
                 ? <AddTask onAdd={addTask}/>
                 : ''
