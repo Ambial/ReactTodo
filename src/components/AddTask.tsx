@@ -1,6 +1,11 @@
+import React, { FormEvent } from 'react'
 import { useState } from "react";
 
-const AddTask = ({onAdd}) => {
+type Props = {
+    onAdd: Function,
+}
+
+const AddTask:React.FC<Props> = ({onAdd}) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [reminder, setReminder] = useState(false)
@@ -11,7 +16,7 @@ const resetState = () => {
     setReminder(false)
 }
 
-const onSubmit = (e) => {
+const onSubmit = (e:FormEvent) => {
     e.preventDefault()
 
     if (!text) {
@@ -42,10 +47,11 @@ const onSubmit = (e) => {
             />
         </div>
         <div className="form-control form-control-check ">
-            <label>Set reminder</label>
+            <label htmlFor='reminderCheckbox'>Set reminder</label>
             <input type='checkbox'
+                   id='reminderCheckbox'
                    checked={reminder}
-                   value={reminder}
+                   value={reminder.toString()}
                    onChange={(e) => setReminder(e.currentTarget.checked)} 
             />
         </div>
