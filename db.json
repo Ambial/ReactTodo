@@ -29,6 +29,12 @@
       "day": "Today?",
       "reminder": false,
       "id": 6
+    },
+    {
+      "text": "Test changes",
+      "day": "tonight",
+      "reminder": false,
+      "id": 7
     }
   ]
 }
