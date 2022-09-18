@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import React from 'react'
 import { useLocation } from 'react-router-dom';
 import Button from './Button';
 
 
-const Header = ({ title, onToggle, activated } ) => {
+const Header:React.FC<Props> = ({ title = 'Hello there', onToggle, activated } ) => {
   const location = useLocation()
 
   return (
@@ -16,12 +16,10 @@ const Header = ({ title, onToggle, activated } ) => {
   )
 }
 
-Header.defaultProps = {
-    title: 'Hello there'
-}
-
-Header.propTypes = {
-    title: PropTypes.string.isRequired
+type Props = {
+  title: string,
+  onToggle: Function,
+  activated: Boolean
 }
 
 export default Header

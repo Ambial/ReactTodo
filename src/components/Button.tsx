@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react'
 
-const Button:React.FC<Props> = ({ buttonText, color, onClick }:Props) => (
+const Button:React.FC<Props> = ({ buttonText, color, onClick }) => (
   <button onClick={onClick}
     style={{ backgroundColor: color }}
     className="btn">
