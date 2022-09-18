@@ -7,16 +7,10 @@
       "reminder": true
     },
     {
-      "id": 2,
-      "text": "Meeting at school",
-      "day": "Feb 6th at 1:30PM",
-      "reminder": false
-    },
-    {
       "id": 3,
       "text": "Grocery shopping",
       "day": "Feb 9th at 5:30PM",
-      "reminder": true
+      "reminder": false
     },
     {
       "text": "Watch GoT",
@@ -29,6 +23,12 @@
       "day": "Sep 18th at 10PM",
       "reminder": true,
       "id": 5
+    },
+    {
+      "text": "Make salad for dinner",
+      "day": "Today?",
+      "reminder": false,
+      "id": 6
     }
   ]
 }
