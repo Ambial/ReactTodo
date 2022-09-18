@@ -23,6 +23,12 @@
       "day": "Besok",
       "reminder": false,
       "id": 4
+    },
+    {
+      "text": "Migrate App to Typescript!",
+      "day": "Sep 18th at 10PM",
+      "reminder": true,
+      "id": 5
     }
   ]
 }
