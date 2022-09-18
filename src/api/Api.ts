@@ -2,11 +2,11 @@ import { Task } from "../types/Task"
 
 const baseURL = 'http://localhost:5000/tasks/'
 
-export const fetchTasks = async ():Promise<JSON> => {
+export const fetchTasks = async ():Promise<Task[]> => {
     const res:Response = await fetch(`${baseURL}`)
     const data:JSON = await res.json()
 
-    return data
+    return JSON.parse(JSON.stringify(data))
 }
 
 export const fetchTaskById = async (id:number):Promise<Task> => {
@@ -35,7 +35,7 @@ export const deleteTaskById = async (id:number) => {
     })
 }
 
-export const addNewTask = async (task:Task):Promise<JSON> => {
+export const addNewTask = async (task:Task):Promise<Task> => {
     const res:Response = await fetch(`${baseURL}`,{
         method: 'POST',
         headers:{
@@ -44,5 +44,5 @@ export const addNewTask = async (task:Task):Promise<JSON> => {
         body: JSON.stringify(task)
     })
 
-    return await res.json()
+    return JSON.parse(await res.json())
 }
