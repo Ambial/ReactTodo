@@ -1,6 +1,8 @@
+import React from 'react'
 import { FaTimes } from "react-icons/fa"
+import { Task } from '../types/Task'
 
-const TodoEntry = ({task, onDelete, onToggle}) => {
+const TodoEntry:React.FC<Props> = ({task, onDelete, onToggle}) => {
   return (
     <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={() => onToggle(task.id)}>
         <h3>{task.text}
@@ -11,6 +13,12 @@ const TodoEntry = ({task, onDelete, onToggle}) => {
         <p>{task.day}</p>
     </div>
   )
+}
+
+type Props = {
+  task: Task,
+  onDelete: Function,
+  onToggle: Function
 }
 
 export default TodoEntry

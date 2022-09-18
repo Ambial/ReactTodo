@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
@@ -11,10 +12,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { Task } from './types/Task';
 
-function App() {
-  const [showAddSection, setShowAddSection] = useState(false)
-  const [tasks, setTasks] = useState([])
+const App:React.FC = () => {
+  const [showAddSection, setShowAddSection] = useState<Boolean>(false)
+  const [tasks, setTasks] = useState<Task[]>([])
 
   useEffect(() => {
     const getTasks = async () => {
@@ -28,17 +30,17 @@ function App() {
     setShowAddSection(!showAddSection)
   }
 
-  const addTask = async (task) => {
+  const addTask = async (task:Task) => {
     const newTask = await addNewTask(task)
     setTasks([...tasks, newTask])
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = (id:number) => {
     deleteTaskById(id)
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  const toggleReminder = async (id) => {
+  const toggleReminder = async (id:number) => {
     updateTaskById(id)
 
     setTasks(tasks.map((task) => task.id === id 
